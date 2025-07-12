@@ -84,10 +84,10 @@ export const metadata: Metadata = {
     siteName: "Voca Podcast",
     images: [
       {
-        url: "/logo.png",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
-        alt: "Voca Podcast - Logo",
+        alt: "Voca Podcast",
       },
     ],
   },
@@ -96,9 +96,7 @@ export const metadata: Metadata = {
     title: "Voca Podcast - Detrás de cada vocación, hay una historia",
     description:
       "Un espacio de historias y aprendizajes con personajes que inspiran. Exploramos las vocaciones reales que construyen el mundo.",
-    images: ["/logo.png"],
-    creator: "@vocapodcast",
-    site: "@vocapodcast",
+    images: ["/favicon.png"],
   },
   robots: {
     index: true,
@@ -114,22 +112,7 @@ export const metadata: Metadata = {
   verification: {
     google: "google-site-verification-code",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
-    ],
-  },
-  manifest: "/site.webmanifest",
-  generator: 'v0.dev'
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -140,16 +123,14 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
-        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/favicon.png" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180" />
+        <link rel="shortcut icon" href="/favicon.png" />
         <link rel="canonical" href="https://vocapodcast.com" />
         <meta name="theme-color" content="#1f3b4d" />
         <meta name="msapplication-TileColor" content="#1f3b4d" />
-        <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="msapplication-TileImage" content="/favicon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -172,7 +153,7 @@ export default function RootLayout({
                 alternateName: ["VocaPodcast", "Voca"],
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://vocapodcast.com/logo.png",
+                  url: "https://vocapodcast.com/favicon.png",
                 },
                 founder: {
                   "@type": "Person",
