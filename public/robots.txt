@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vocapodcast.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /entrevistas
+Allow: /contacto
+Allow: /entrevistas/*
+
+# Additional crawling instructions for better SEO
+# Allow search engines to index all podcast content
+Allow: /*.mp3
+Allow: /*.mp4
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.webp
+
+# Common misspellings and variations
+# voca podcast, vocapodcast, voca, podcast vocacion, etc.

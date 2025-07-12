@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --voca-blue: #1f3b4d;
+  --voca-dark-blue: #152b36;
+  --voca-darker-blue: #0f1f28;
+  --voca-cream: #fcfbf1;
+  --voca-gray: #2e2e2f;
+  --voca-dark-gray: #1a1a1b;
+  --voca-light-gray: #f8f9fa;
+
+  /* Light mode */
+  --background: #ffffff;
+  --foreground: #1f3b4d;
+  --card: #ffffff;
+  --card-foreground: #1f3b4d;
+  --popover: #ffffff;
+  --popover-foreground: #1f3b4d;
+  --primary: #1f3b4d;
+  --primary-foreground: #fcfbf1;
+  --secondary: #f8f9fa;
+  --secondary-foreground: #1f3b4d;
+  --muted: #f8f9fa;
+  --muted-foreground: #2e2e2f;
+  --accent: #f8f9fa;
+  --accent-foreground: #1f3b4d;
+  --destructive: #ef4444;
+  --destructive-foreground: #fcfbf1;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #1f3b4d;
+}
+
+.dark {
+  /* Dark mode - navbar y footer gris oscuro, cards azul más oscuro */
+  --background: #1a1a1b;
+  --foreground: #fcfbf1;
+  --card: #0f1f28;
+  --card-foreground: #fcfbf1;
+  --popover: #0f1f28;
+  --popover-foreground: #fcfbf1;
+  --primary: #fcfbf1;
+  --primary-foreground: #1f3b4d;
+  --secondary: #2e2e2f;
+  --secondary-foreground: #fcfbf1;
+  --muted: #2e2e2f;
+  --muted-foreground: #fcfbf1;
+  --accent: #2e2e2f;
+  --accent-foreground: #fcfbf1;
+  --destructive: #ef4444;
+  --destructive-foreground: #fcfbf1;
+  --border: #2e2e2f;
+  --input: #2e2e2f;
+  --ring: #fcfbf1;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-montserrat;
+  }
+}
+
+@layer utilities {
+  .text-voca-blue {
+    color: var(--voca-blue);
+  }
+  .bg-voca-blue {
+    background-color: var(--voca-blue);
+  }
+  .bg-voca-dark-blue {
+    background-color: var(--voca-dark-blue);
+  }
+  .bg-voca-darker-blue {
+    background-color: var(--voca-darker-blue);
+  }
+  .text-voca-cream {
+    color: var(--voca-cream);
+  }
+  .bg-voca-cream {
+    background-color: var(--voca-cream);
+  }
+  .text-voca-gray {
+    color: var(--voca-gray);
+  }
+  .bg-voca-gray {
+    background-color: var(--voca-gray);
+  }
+  .bg-voca-dark-gray {
+    background-color: var(--voca-dark-gray);
+  }
+  .bg-voca-light-gray {
+    background-color: var(--voca-light-gray);
+  }
+}
+
+/* Custom Text Selection - Voca Podcast Style */
+::selection {
+  background-color: var(--voca-blue);
+  color: var(--voca-cream);
+}
+
+::-moz-selection {
+  background-color: var(--voca-blue);
+  color: var(--voca-cream);
+}
+
+.dark ::selection {
+  background-color: var(--voca-cream);
+  color: var(--voca-blue);
+}
+
+.dark ::-moz-selection {
+  background-color: var(--voca-cream);
+  color: var(--voca-blue);
+}
+
+/* Custom Scrollbar - Light Mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f3b4d;
+  border-radius: 4px;
+  border: 1px solid #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #152b36;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f8f9fa;
+}
+
+/* Custom Scrollbar - Dark Mode */
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a1b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #fcfbf1;
+  border: 1px solid #1a1a1b;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #e8e7de;
+}
+
+.dark ::-webkit-scrollbar-corner {
+  background: #1a1a1b;
+}
+
+/* Firefox Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #1f3b4d #f8f9fa;
+}
+
+.dark html {
+  scrollbar-color: #fcfbf1 #1a1a1b;
+}
