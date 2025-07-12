@@ -4,10 +4,32 @@ import { ContactHero } from "@/components/contact-hero"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contacto - ¿Tienes una historia que contar?",
   description:
-    "¿Tienes una historia que contar? Contáctanos para proponer una entrevista, colaboraciones o cualquier consulta sobre Voca Podcast.",
+    "¿Tienes una historia que contar? Contáctanos para proponer una entrevista, colaboraciones o cualquier consulta sobre Voca Podcast. Estamos aquí para escuchar tu vocación.",
+  keywords: [
+    "contacto voca podcast",
+    "proponer entrevista",
+    "colaborar voca podcast",
+    "contacto podcast argentino",
+    "máximo sarmiento contacto",
+    "vocación entrevista",
+    "podcast colaboración",
+  ],
   openGraph: {
+    title: "Contacto - Voca Podcast",
+    description:
+      "¿Tienes una historia que contar? Contáctanos para proponer una entrevista, colaboraciones o cualquier consulta.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Contacto - Voca Podcast",
+      },
+    ],
+  },
+  twitter: {
     title: "Contacto - Voca Podcast",
     description:
       "¿Tienes una historia que contar? Contáctanos para proponer una entrevista, colaboraciones o cualquier consulta.",

@@ -6,7 +6,56 @@ import { Clock, Calendar, Play, ExternalLink, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getInterviewBySlug } from "@/lib/interviews-data"
-import Head from "next/head"
+import type { Metadata } from "next"
+
+// Función para generar metadatos dinámicos
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const interview = getInterviewBySlug(params.slug)
+
+  if (!interview) {
+    return {
+      title: "Entrevista no encontrada",
+      description: "La entrevista que buscas no existe.",
+    }
+  }
+
+  return {
+    title: `${interview.title} | Voca Podcast`,
+    description: interview.description,
+    keywords: [
+      interview.nombre,
+      interview.rubro,
+      interview.category,
+      "entrevista vocación",
+      "podcast argentino",
+      "voca podcast",
+      "vocación",
+      "profesión",
+    ],
+    openGraph: {
+      title: `${interview.title} | Voca Podcast`,
+      description: interview.description,
+      type: "video.episode",
+      images: [
+        {
+          url: interview.thumbnail,
+          width: 1200,
+          height: 630,
+          alt: interview.title,
+        },
+      ],
+    },
+    twitter: {
+      title: `${interview.title} | Voca Podcast`,
+      description: interview.description,
+      images: [interview.thumbnail],
+    },
+    other: {
+      "video:duration": interview.duration,
+      "video:release_date": interview.date,
+    },
+  }
+}
 
 export default function InterviewDetailPage({ params }: { params: { slug: string } }) {
   const interview = getInterviewBySlug(params.slug)
@@ -26,37 +75,29 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
 
   return (
     <>
-      <Head>
-        <title>{interview.title} | Voca Podcast</title>
-        <meta name="description" content={interview.description} />
-        <meta property="og:title" content={`${interview.title} | Voca Podcast`} />
-        <meta property="og:description" content={interview.description} />
-        <meta property="og:image" content={interview.thumbnail} />
-        <meta property="og:type" content="video.episode" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "VideoObject",
-              name: interview.title,
-              description: interview.description,
-              thumbnailUrl: interview.thumbnail,
-              uploadDate: interview.date,
-              duration: `PT${interview.duration.replace(":", "M")}S`,
-              embedUrl: `https://www.youtube.com/embed/${interview.youtubeId}`,
-              publisher: {
-                "@type": "Organization",
-                name: "Voca Podcast",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://vocapodcast.com/favicon.png",
-                },
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: interview.title,
+            description: interview.description,
+            thumbnailUrl: interview.thumbnail,
+            uploadDate: interview.date,
+            duration: `PT${interview.duration.replace(":", "M")}S`,
+            embedUrl: `https://www.youtube.com/embed/${interview.youtubeId}`,
+            publisher: {
+              "@type": "Organization",
+              name: "Voca Podcast",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://vocapodcast.com/logo.png",
               },
-            }),
-          }}
-        />
-      </Head>
+            },
+          }),
+        }}
+      />
       <div className="min-h-screen bg-voca-light-gray dark:bg-voca-blue">
         <div className="container py-8">
           <div className="max-w-4xl mx-auto space-y-8">

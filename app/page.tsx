@@ -8,11 +8,33 @@ import { StatsMiniSection } from "@/components/stats-mini-section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Inicio",
+  title: "Inicio - Detrás de cada vocación, hay una historia",
   description:
-    "Descubre historias inspiradoras de vocaciones reales. Entrevistas profundas con personas que hacen lo que aman y construyen el mundo con su trabajo.",
+    "Descubre historias inspiradoras de vocaciones reales. Entrevistas profundas con personas que hacen lo que aman y construyen el mundo con su trabajo. Voca Podcast, el espacio donde las vocaciones cobran vida.",
+  keywords: [
+    "voca podcast inicio",
+    "podcast vocación argentina",
+    "historias vocación",
+    "entrevistas inspiradoras",
+    "vocación trabajo",
+    "podcast argentino",
+    "máximo sarmiento podcast",
+  ],
   openGraph: {
-    title: "Voca Podcast - Historias que inspiran",
+    title: "Voca Podcast - Detrás de cada vocación, hay una historia",
+    description:
+      "Descubre historias inspiradoras de vocaciones reales. Entrevistas profundas con personas que hacen lo que aman y construyen el mundo con su trabajo.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Voca Podcast - Inicio",
+      },
+    ],
+  },
+  twitter: {
+    title: "Voca Podcast - Detrás de cada vocación, hay una historia",
     description:
       "Descubre historias inspiradoras de vocaciones reales. Entrevistas profundas con personas que hacen lo que aman.",
   },
