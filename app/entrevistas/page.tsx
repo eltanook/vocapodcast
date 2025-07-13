@@ -3,41 +3,6 @@
 import { useState } from "react"
 import { InterviewsGrid } from "@/components/interviews-grid"
 import { InterviewsFilters } from "@/components/interviews-filters"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Entrevistas - Colección completa de vocaciones",
-  description:
-    "Explora nuestra colección completa de entrevistas sobre vocaciones reales. Historias inspiradoras de profesionales de diferentes áreas que comparten sus experiencias y aprendizajes.",
-  keywords: [
-    "entrevistas vocación",
-    "podcast entrevistas",
-    "historias profesionales",
-    "vocaciones argentina",
-    "entrevistas inspiradoras",
-    "profesiones podcast",
-    "oficios argentinos",
-    "carreras profesionales",
-  ],
-  openGraph: {
-    title: "Entrevistas - Voca Podcast",
-    description:
-      "Explora nuestra colección completa de entrevistas sobre vocaciones reales. Historias inspiradoras de profesionales de diferentes áreas.",
-    images: [
-      {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Entrevistas - Voca Podcast",
-      },
-    ],
-  },
-  twitter: {
-    title: "Entrevistas - Voca Podcast",
-    description:
-      "Explora nuestra colección completa de entrevistas sobre vocaciones reales. Historias inspiradoras de profesionales.",
-  },
-}
 
 export default function EntrevistasPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])

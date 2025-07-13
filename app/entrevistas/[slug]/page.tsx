@@ -1,11 +1,10 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Clock, Calendar, Play, ExternalLink, ArrowLeft } from "lucide-react"
+import { Clock, Calendar, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getInterviewBySlug } from "@/lib/interviews-data"
+import { InterviewActions } from "@/components/interview-actions"
 import type { Metadata } from "next"
 
 // Función para generar metadatos dinámicos
@@ -15,44 +14,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!interview) {
     return {
       title: "Entrevista no encontrada",
-      description: "La entrevista que buscas no existe.",
+      description: "La entrevista solicitada no existe.",
     }
   }
 
   return {
     title: `${interview.title} | Voca Podcast`,
     description: interview.description,
-    keywords: [
-      interview.nombre,
-      interview.rubro,
-      interview.category,
-      "entrevista vocación",
-      "podcast argentino",
-      "voca podcast",
-      "vocación",
-      "profesión",
-    ],
     openGraph: {
       title: `${interview.title} | Voca Podcast`,
       description: interview.description,
+      images: [interview.thumbnail],
       type: "video.episode",
-      images: [
-        {
-          url: interview.thumbnail,
-          width: 1200,
-          height: 630,
-          alt: interview.title,
-        },
-      ],
     },
     twitter: {
+      card: "summary_large_image",
       title: `${interview.title} | Voca Podcast`,
       description: interview.description,
       images: [interview.thumbnail],
-    },
-    other: {
-      "video:duration": interview.duration,
-      "video:release_date": interview.date,
     },
   }
 }
@@ -92,7 +71,7 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
               name: "Voca Podcast",
               logo: {
                 "@type": "ImageObject",
-                url: "https://vocapodcast.com/logo.png",
+                url: "https://vocapodcast.com/favicon.png",
               },
             },
           }),
@@ -152,28 +131,7 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
               </div>
 
               {/* Action buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  className="bg-red-500 hover:bg-red-600 text-white"
-                  onClick={() => window.open(interview.youtubeUrl, "_blank")}
-                >
-                  <Play className="w-4 h-4 mr-2" />
-                  Ver en YouTube
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white bg-transparent"
-                  onClick={() =>
-                    window.open(
-                      interview.spotifyUrl || "https://open.spotify.com/show/4wgIOoUl8EeehNx9UhOeC1",
-                      "_blank",
-                    )
-                  }
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Escuchar en Spotify
-                </Button>
-              </div>
+              <InterviewActions youtubeUrl={interview.youtubeUrl} spotifyUrl={interview.spotifyUrl} />
             </div>
 
             {/* Content */}
