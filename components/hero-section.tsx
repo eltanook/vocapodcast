@@ -18,7 +18,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 container h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[90vh] py-6 lg:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center min-h-[90vh] py-4 lg:py-8">
           {/* Left Column - Text Content */}
           <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
             <div className="space-y-4 lg:space-y-6">
@@ -72,7 +72,7 @@ export function HeroSection() {
           </div>
 
           {/* Right Column - Video */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 mb-0 lg:mb-0">
             <div className="aspect-video rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl mx-4 md:mx-0">
               <iframe
                 width="100%"
