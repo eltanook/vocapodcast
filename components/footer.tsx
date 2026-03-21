@@ -133,7 +133,7 @@ export function Footer() {
           <p>
             Desarrollado y diseñado por{" "}
             <a
-              href="https://zevetix.online/"
+              href="https://zevetix.site/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-voca-cream hover:underline"
