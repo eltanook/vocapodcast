@@ -1,12 +1,14 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Play, Clock, Calendar, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
-import { filterInterviews } from "@/lib/interviews-data"
+import { urlForImage } from "@/sanity/lib/image"
+import { filterInterviews } from "@/sanity/lib/utils"
+import type { Interview } from "@/sanity/lib/types"
 
 const ITEMS_PER_PAGE = 6
 
@@ -14,16 +16,18 @@ export function InterviewsGrid({
   selectedCategories,
   searchTerm,
   sortBy,
+  interviews = [],
 }: {
   selectedCategories: string[]
   searchTerm: string
   sortBy: string
+  interviews?: Interview[]
 }) {
   const [currentPage, setCurrentPage] = useState(1)
 
   const filteredAndSortedInterviews = useMemo(() => {
-    return filterInterviews(selectedCategories, searchTerm, sortBy)
-  }, [selectedCategories, searchTerm, sortBy])
+    return filterInterviews(interviews, selectedCategories, searchTerm, sortBy)
+  }, [selectedCategories, searchTerm, sortBy, interviews])
 
   const totalPages = Math.ceil(filteredAndSortedInterviews.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
@@ -45,7 +49,7 @@ export function InterviewsGrid({
   }
 
   // Reset page when filters change
-  useState(() => {
+  useEffect(() => {
     setCurrentPage(1)
   }, [selectedCategories, searchTerm, sortBy])
 
@@ -55,11 +59,17 @@ export function InterviewsGrid({
         {currentInterviews.map((interview) => (
           <Card
             key={interview.id}
-            className="group overflow-hidden hover:shadow-lg transition-shadow bg-white dark:bg-voca-medium-blue border-voca-blue/20 dark:border-voca-cream/20"
+            className="group overflow-hidden voca-card"
           >
             <div className="relative aspect-video overflow-hidden">
               <Image
-                src={interview.thumbnail || "/placeholder.svg"}
+                src={
+                  typeof interview.thumbnail === "string"
+                    ? interview.thumbnail
+                    : interview.thumbnail?.asset
+                      ? urlForImage(interview.thumbnail).url()
+                      : "/placeholder.svg"
+                }
                 alt={interview.title}
                 width={300}
                 height={200}
@@ -146,7 +156,7 @@ export function InterviewsGrid({
             size="sm"
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
-            className="border-voca-blue/20 dark:border-voca-cream/20 w-full sm:w-auto"
+            className="voca-button border-voca-blue/20 dark:border-voca-cream/20 w-full sm:w-auto"
           >
             <ChevronLeft className="w-4 h-4" />
             Anterior
@@ -161,8 +171,8 @@ export function InterviewsGrid({
                 onClick={() => goToPage(page)}
                 className={
                   currentPage === page
-                    ? "bg-voca-blue hover:bg-voca-blue/90 text-voca-cream"
-                    : "border-voca-blue/20 dark:border-voca-cream/20"
+                    ? "voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream"
+                    : "voca-button border-voca-blue/20 dark:border-voca-cream/20"
                 }
               >
                 {page}
@@ -175,7 +185,7 @@ export function InterviewsGrid({
             size="sm"
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="border-voca-blue/20 dark:border-voca-cream/20 w-full sm:w-auto"
+            className="voca-button border-voca-blue/20 dark:border-voca-cream/20 w-full sm:w-auto"
           >
             Siguiente
             <ChevronRight className="w-4 h-4" />

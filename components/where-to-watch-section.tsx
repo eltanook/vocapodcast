@@ -9,7 +9,7 @@ const platforms = [
     icon: Youtube,
     description: "Videos completos y clips destacados",
     color:
-      "bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800",
+      "voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream border-none shadow-sm",
     link: "https://www.youtube.com/@vocapodcast",
   },
   {
@@ -21,7 +21,7 @@ const platforms = [
     ),
     description: "Audio de todos los episodios",
     color:
-      "bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800",
+      "voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream border-none shadow-sm",
     link: "https://open.spotify.com/show/4wgIOoUl8EeehNx9UhOeC1",
   },
   {
@@ -29,7 +29,7 @@ const platforms = [
     icon: Smartphone,
     description: "Clips cortos y destacados",
     color:
-      "bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800",
+      "voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream border-none shadow-sm",
     link: "https://tiktok.com/@_vocaciónpodcast",
   },
   {
@@ -37,7 +37,7 @@ const platforms = [
     icon: Instagram,
     description: "Contenido visual y stories",
     color:
-      "bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800",
+      "voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream border-none shadow-sm",
     link: "https://instagram.com/voca.podcast",
   },
 ]
@@ -57,8 +57,8 @@ export function WhereToWatchSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {platforms.map((platform, index) => (
-            <div key={index} className="group text-center h-full">
-              <div className="bg-white dark:bg-voca-medium-blue rounded-xl shadow-lg p-6 h-full flex flex-col justify-between transition-transform hover:scale-105 border border-gray-100 dark:border-voca-cream/10">
+            <div key={index} className="group text-center h-full voca-hover-lift">
+              <div className="voca-card p-6 h-full flex flex-col justify-between">
                 <div className="space-y-4 flex-1">
                   <div className="w-16 h-16 mx-auto bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     {typeof platform.icon === "function" ? (

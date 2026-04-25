@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Filter, X, Search, Check } from "lucide-react"
-import { getAvailableCategories } from "@/lib/interviews-data"
+import { getAvailableCategories } from "@/sanity/lib/utils"
+import type { Interview } from "@/sanity/lib/types"
 
 const sortOptions = [
   { value: "date-desc", label: "Fecha De Subida (Más Reciente)" },
@@ -23,6 +24,7 @@ interface InterviewsFiltersProps {
   onSearchChange: (search: string) => void
   sortBy: string
   onSortChange: (sort: string) => void
+  interviews: Interview[]
 }
 
 export function InterviewsFilters({
@@ -32,11 +34,12 @@ export function InterviewsFilters({
   onSearchChange,
   sortBy,
   onSortChange,
+  interviews,
 }: InterviewsFiltersProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   // Obtener categorías dinámicamente basadas en las entrevistas reales
-  const categories = getAvailableCategories()
+  const categories = getAvailableCategories(interviews)
 
   const handleCategoryChange = (categoryId: string, checked: boolean) => {
     if (checked) {
@@ -63,7 +66,7 @@ export function InterviewsFilters({
         <Button
           variant="outline"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full border-voca-blue/20 dark:border-voca-cream/20"
+          className="w-full border-voca-blue/20 dark:border-voca-cream/20 voca-button"
         >
           <Filter className="w-4 h-4 mr-2" />
           Filtros
@@ -78,7 +81,7 @@ export function InterviewsFilters({
       {/* Filters panel */}
       <div className={`${isOpen ? "block" : "hidden"} lg:block space-y-6`}>
         {/* Búsqueda y Ordenado */}
-        <Card className="bg-white dark:bg-voca-medium-blue border-voca-blue/20 dark:border-voca-cream/20">
+        <Card className="voca-card">
           <CardContent className="p-6 space-y-6">
             {/* Búsqueda */}
             <div className="space-y-2">
@@ -124,7 +127,7 @@ export function InterviewsFilters({
 
         {/* Categorías */}
         {categories.length > 0 && (
-          <Card className="bg-white dark:bg-voca-medium-blue border-voca-blue/20 dark:border-voca-cream/20">
+          <Card className="voca-card">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg text-voca-blue dark:text-voca-cream">Categorías</CardTitle>
               <div className="flex items-center space-x-2">

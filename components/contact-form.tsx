@@ -25,7 +25,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="border-0 shadow-lg bg-white dark:bg-voca-medium-blue">
+    <Card className="voca-card">
       <CardHeader>
         <CardTitle className="text-voca-blue dark:text-voca-cream">Envíanos un mensaje</CardTitle>
         <CardDescription className="text-voca-blue/70 dark:text-voca-cream/70">
@@ -102,7 +102,7 @@ export function ContactForm() {
 
           <Button
             type="submit"
-            className="w-full bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800"
+            className="w-full voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream shadow-md hover:shadow-lg"
           >
             <Send className="w-4 h-4 mr-2" />
             Enviar mensaje

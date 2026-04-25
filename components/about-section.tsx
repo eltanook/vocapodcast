@@ -47,7 +47,7 @@ export function AboutSection() {
             {/* Llamados a la acción debajo del texto */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
               <Button
-                className="bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800"
+                className="voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream shadow-sm hover:shadow-md"
                 onClick={() => window.open("https://www.youtube.com/@vocapodcast", "_blank")}
               >
                 Ver canal
@@ -55,7 +55,7 @@ export function AboutSection() {
               <Link href="/entrevistas">
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                  className="voca-button w-full sm:w-auto border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-voca-cream/30 dark:text-voca-cream dark:hover:bg-voca-cream/10 shadow-sm hover:shadow-md"
                 >
                   Ver entrevistas
                 </Button>
@@ -64,7 +64,7 @@ export function AboutSection() {
           </div>
 
           <div className="relative group order-1 lg:order-2">
-            <div className="aspect-[4/3] rounded-xl lg:rounded-2xl overflow-hidden shadow-xl relative">
+            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-xl relative">
               <Image
                 src="/about.jpg"
                 alt="Voca Podcast - Detrás de cámaras"

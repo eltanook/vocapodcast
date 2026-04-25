@@ -60,6 +60,16 @@ export function Header() {
             Entrevistas
           </Link>
           <Link
+            href="/blog"
+            className={`text-sm font-medium transition-colors ${
+              isActive("/blog")
+                ? "text-voca-cream border-b-2 border-voca-cream pb-1"
+                : "text-voca-cream/80 hover:text-voca-cream"
+            }`}
+          >
+            Blog
+          </Link>
+          <Link
             href="/contacto"
             className={`text-sm font-medium transition-colors ${
               isActive("/contacto")
@@ -95,7 +105,7 @@ export function Header() {
 
           {/* Hide "Ver Canal" button on mobile */}
           <Button
-            className="hidden md:flex bg-voca-cream hover:bg-voca-cream/90 text-voca-blue border-0"
+            className="voca-button hidden md:flex bg-voca-cream hover:bg-white text-voca-blue border-0 shadow-md hover:shadow-lg"
             onClick={() => window.open("https://www.youtube.com/@vocapodcast", "_blank")}
           >
             <ExternalLink className="w-4 h-4 mr-2" />
@@ -128,6 +138,15 @@ export function Header() {
               Entrevistas
             </Link>
             <Link
+              href="/blog"
+              className={`block text-sm font-medium transition-colors ${
+                isActive("/blog") ? "text-voca-cream font-semibold" : "text-voca-cream/80 hover:text-voca-cream"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
               href="/contacto"
               className={`block text-sm font-medium transition-colors ${
                 isActive("/contacto") ? "text-voca-cream font-semibold" : "text-voca-cream/80 hover:text-voca-cream"
@@ -137,7 +156,7 @@ export function Header() {
               Contacto
             </Link>
             <Button
-              className="w-full bg-voca-cream hover:bg-voca-cream/90 text-voca-blue border-0"
+              className="voca-button w-full bg-voca-cream hover:bg-white text-voca-blue border-0"
               onClick={() => {
                 window.open("https://www.youtube.com/@vocapodcast", "_blank")
                 setIsMenuOpen(false)

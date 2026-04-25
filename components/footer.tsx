@@ -43,6 +43,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-voca-cream/80 hover:text-voca-cream transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/contacto" className="text-voca-cream/80 hover:text-voca-cream transition-colors">
                   Contacto
                 </Link>

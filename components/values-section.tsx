@@ -4,7 +4,7 @@ const values = [
   {
     icon: Eye,
     title: "Curiosidad genuina",
-    description: "Hacemos las preguntas que realmente importan, con interés auténtico por cada historia.",
+    description: "Preguntas con propósito e interés genuino por cada historia.",
   },
   {
     icon: Heart,
@@ -50,7 +50,7 @@ export function ValuesSection() {
           {values.map((value, index) => (
             <div
               key={index}
-              className="group p-6 rounded-xl border border-voca-blue/20 dark:border-voca-cream/20 hover:border-voca-blue/50 dark:hover:border-voca-cream/50 transition-all duration-300 hover:shadow-lg bg-white dark:bg-voca-medium-blue"
+              className="group p-6 voca-card voca-hover-lift"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-voca-blue/10 dark:bg-voca-cream/10 rounded-lg flex items-center justify-center group-hover:bg-voca-blue/20 dark:group-hover:bg-voca-cream/20 transition-colors">

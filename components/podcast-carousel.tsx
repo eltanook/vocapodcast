@@ -4,13 +4,14 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Play, Clock, Calendar } from "lucide-react"
 import Image from "next/image"
-import { getLatestInterviews } from "@/lib/interviews-data"
+import type { Interview } from "@/sanity/lib/types"
+import { urlForImage } from "@/sanity/lib/image"
 
-export function PodcastCarousel() {
+export function PodcastCarousel({ interviews = [] }: { interviews?: Interview[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  // Obtener las últimas 4 entrevistas automáticamente
-  const latestInterviews = getLatestInterviews(4)
+  // Usar las entrevistas pasadas por prop
+  const latestInterviews = interviews
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % latestInterviews.length)
@@ -58,7 +59,13 @@ export function PodcastCarousel() {
                     <div className="relative order-2 lg:order-1">
                       <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
                         <Image
-                          src={interview.thumbnail || "/placeholder.svg"}
+                          src={
+                            typeof interview.thumbnail === "string"
+                              ? interview.thumbnail
+                              : interview.thumbnail?.asset
+                                ? urlForImage(interview.thumbnail).url()
+                                : "/placeholder.svg"
+                          }
                           alt={interview.title}
                           width={400}
                           height={300}
@@ -92,7 +99,7 @@ export function PodcastCarousel() {
 
                       <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                         <Button
-                          className="bg-voca-blue hover:bg-transparent hover:border-voca-blue hover:text-voca-blue text-voca-cream border border-voca-blue dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-800"
+                          className="voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream shadow-sm hover:shadow-md"
                           onClick={() => window.open(interview.youtubeUrl, "_blank")}
                         >
                           <Play className="w-4 h-4 mr-2" />
@@ -100,7 +107,7 @@ export function PodcastCarousel() {
                         </Button>
                         <Button
                           variant="outline"
-                          className="border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                          className="voca-button border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-voca-cream/30 dark:text-voca-cream dark:hover:bg-voca-cream/10"
                           onClick={() =>
                             window.open(
                               interview.spotifyUrl || "https://open.spotify.com/show/4wgIOoUl8EeehNx9UhOeC1",
@@ -122,7 +129,7 @@ export function PodcastCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-voca-blue/20 hidden lg:flex"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-voca-dark-blue/90 hover:bg-white dark:hover:bg-voca-dark-blue border-voca-blue/20 dark:border-voca-cream/10 rounded-full shadow-lg hidden lg:flex"
             onClick={prevSlide}
           >
             <ChevronLeft className="w-4 h-4" />
@@ -130,7 +137,7 @@ export function PodcastCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-voca-blue/20 hidden lg:flex"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-voca-dark-blue/90 hover:bg-white dark:hover:bg-voca-dark-blue border-voca-blue/20 dark:border-voca-cream/10 rounded-full shadow-lg hidden lg:flex"
             onClick={nextSlide}
           >
             <ChevronRight className="w-4 h-4" />

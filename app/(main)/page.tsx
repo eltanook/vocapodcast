@@ -6,6 +6,8 @@ import { WhereToWatchSection } from "@/components/where-to-watch-section"
 import { InterviewRequestSection } from "@/components/interview-request-section"
 import { StatsMiniSection } from "@/components/stats-mini-section"
 import type { Metadata } from "next"
+import { client } from "@/sanity/lib/client"
+import { getLatestPodcastsQuery } from "@/sanity/lib/queries"
 
 export const metadata: Metadata = {
   title: "Inicio",
@@ -18,14 +20,21 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  let latestInterviews = []
+  try {
+    latestInterviews = await client.fetch(getLatestPodcastsQuery, { limit: 4 })
+  } catch (e) {
+    console.error("Error fetching latest podcasts:", e)
+  }
+
   return (
     <main className="min-h-screen">
       <HeroSection />
       <StatsMiniSection />
       <AboutSection />
       <ValuesSection />
-      <PodcastCarousel />
+      <PodcastCarousel interviews={latestInterviews} />
       <WhereToWatchSection />
       <InterviewRequestSection />
     </main>

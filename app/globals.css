@@ -73,6 +73,32 @@
   }
 }
 
+@layer components {
+  .voca-card {
+    @apply rounded-xl !important;
+    @apply bg-white dark:bg-voca-dark-blue border border-voca-blue/10 dark:border-white/5 shadow-sm transition-all duration-300;
+  }
+  
+  .voca-card:hover {
+    @apply shadow-xl !important;
+    @apply border-voca-blue/20 dark:border-white/10;
+  }
+  
+  .voca-button {
+    @apply rounded-lg !important;
+    @apply transition-all duration-300 shadow-sm;
+  }
+  
+  .voca-button:hover {
+    @apply shadow-md !important;
+    @apply -translate-y-0.5;
+  }
+  
+  .voca-hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+}
+
 @layer utilities {
   .text-voca-blue {
     color: var(--voca-blue);

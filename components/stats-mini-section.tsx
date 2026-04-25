@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { Users, Play, Clock, Star } from "lucide-react"
-import { getInterviewStats } from "@/lib/interviews-data"
 
 function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) {
   const [current, setCurrent] = useState(0)
@@ -31,12 +30,10 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
 }
 
 export function StatsMiniSection() {
-  const stats = getInterviewStats()
-
   const displayStats = [
     {
       icon: Users,
-      number: stats.totalInterviews,
+      number: 11,
       suffix: "",
       label: "Entrevistas",
     },
@@ -48,13 +45,13 @@ export function StatsMiniSection() {
     },
     {
       icon: Clock,
-      number: stats.totalHours,
+      number: 15,
       suffix: "+",
       label: "Horas",
     },
     {
       icon: Star,
-      number: stats.avgRating,
+      number: 4.9,
       suffix: "",
       label: "Calificación",
     },

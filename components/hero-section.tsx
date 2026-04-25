@@ -38,7 +38,7 @@ export function HeroSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto border-white text-white hover:bg-transparent hover:border-white hover:text-white px-6 lg:px-8 py-3 bg-white text-voca-blue"
+                  className="voca-button w-full sm:w-auto px-6 lg:px-8 py-3 bg-white text-voca-blue hover:bg-voca-cream border-none shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
                 >
                   Explorar entrevistas
                   <ArrowRight className="w-4 lg:w-5 h-4 lg:h-5 ml-2" />
@@ -73,7 +73,7 @@ export function HeroSection() {
 
           {/* Right Column - Video */}
           <div className="order-1 lg:order-2 mb-0 lg:mb-0">
-            <div className="aspect-video rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl mx-4 md:mx-0">
+            <div className="aspect-video rounded-xl overflow-hidden shadow-2xl mx-4 md:mx-0">
               <iframe
                 width="100%"
                 height="100%"

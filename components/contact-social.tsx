@@ -4,7 +4,7 @@ import { Youtube, Instagram } from "lucide-react"
 export function ContactSocial() {
   return (
     <div className="h-full">
-      <Card className="border-0 shadow-lg bg-white dark:bg-voca-medium-blue h-full">
+      <Card className="voca-card h-full">
         <CardContent className="p-6 space-y-4 h-full flex flex-col">
           <div className="space-y-4 flex-1">
             <h3 className="font-montserrat font-semibold text-lg text-voca-blue dark:text-voca-cream mb-6">

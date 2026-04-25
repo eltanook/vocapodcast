@@ -33,7 +33,7 @@ export function InterviewRequestSection() {
             <Link href="/contacto">
               <Button
                 size="lg"
-                className="bg-voca-cream hover:bg-voca-cream/90 text-voca-blue border-0 px-8 py-4 text-lg font-semibold"
+                className="voca-button bg-voca-cream hover:bg-white text-voca-blue border-0 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
               >
                 Contáctanos Para Tu Entrevista
               </Button>

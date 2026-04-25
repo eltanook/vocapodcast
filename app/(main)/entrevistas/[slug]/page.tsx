@@ -3,13 +3,27 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Clock, Calendar, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { getInterviewBySlug } from "@/lib/interviews-data"
+import { urlForImage } from "@/sanity/lib/image"
 import { InterviewActions } from "@/components/interview-actions"
 import type { Metadata } from "next"
+import { client } from "@/sanity/lib/client"
+import { getPodcastBySlugQuery } from "@/sanity/lib/queries"
+import Image from "next/image"
+
+type Props = {
+  params: Promise<{ slug: string }>
+}
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const interview = getInterviewBySlug(params.slug)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  
+  let interview = null
+  try {
+    interview = await client.fetch(getPodcastBySlugQuery, { slug })
+  } catch (e) {
+    console.error("Error fetching podcast metadata:", e)
+  }
 
   if (!interview) {
     return {
@@ -24,26 +38,34 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: `${interview.title} | Voca Podcast`,
       description: interview.description,
-      images: [interview.thumbnail],
+      images: [typeof interview.thumbnail === 'string' ? interview.thumbnail : urlForImage(interview.thumbnail).url()],
       type: "video.episode",
     },
     twitter: {
       card: "summary_large_image",
       title: `${interview.title} | Voca Podcast`,
       description: interview.description,
-      images: [interview.thumbnail],
+      images: [typeof interview.thumbnail === 'string' ? interview.thumbnail : urlForImage(interview.thumbnail).url()],
     },
   }
 }
 
-export default function InterviewDetailPage({ params }: { params: { slug: string } }) {
-  const interview = getInterviewBySlug(params.slug)
+export default async function InterviewDetailPage({ params }: Props) {
+  const { slug } = await params
+  
+  let interview = null
+  try {
+    interview = await client.fetch(getPodcastBySlugQuery, { slug })
+  } catch (e) {
+    console.error("Error fetching podcast detail:", e)
+  }
 
   if (!interview) {
     notFound()
   }
 
   const formatDate = (dateStr: string) => {
+    if (!dateStr) return ""
     const date = new Date(dateStr)
     return date.toLocaleDateString("es-ES", {
       day: "numeric",
@@ -62,9 +84,9 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
             "@type": "VideoObject",
             name: interview.title,
             description: interview.description,
-            thumbnailUrl: interview.thumbnail,
+            thumbnailUrl: typeof interview.thumbnail === 'string' ? interview.thumbnail : urlForImage(interview.thumbnail).url(),
             uploadDate: interview.date,
-            duration: `PT${interview.duration.replace(":", "M")}S`,
+            duration: `PT${(interview.duration || "").replace(":", "M")}S`,
             embedUrl: `https://www.youtube.com/embed/${interview.youtubeId}`,
             publisher: {
               "@type": "Organization",
@@ -90,7 +112,7 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
 
             {/* Video Header */}
             <div className="space-y-6">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <iframe
                   width="100%"
                   height="100%"
@@ -135,12 +157,25 @@ export default function InterviewDetailPage({ params }: { params: { slug: string
             </div>
 
             {/* Content */}
-            <Card className="bg-white dark:bg-voca-medium-blue border-voca-blue/20 dark:border-voca-cream/20">
+            <Card className="voca-card">
               <CardContent className="p-8">
                 <div className="space-y-6">
                   <h2 className="text-2xl font-montserrat font-bold text-voca-blue dark:text-voca-cream">
                     Sobre esta entrevista
                   </h2>
+                  <Image
+                    src={
+                      typeof interview.thumbnail === "string"
+                        ? interview.thumbnail
+                        : interview.thumbnail?.asset
+                          ? urlForImage(interview.thumbnail).url()
+                          : "/placeholder.svg"
+                    }
+                    alt={interview.title}
+                    width={800}
+                    height={450}
+                    className="rounded-xl w-full"
+                  />
                   <div className="space-y-4">
                     <p className="text-voca-blue/80 dark:text-voca-cream/80 leading-relaxed">
                       <strong>Entrevistado:</strong> {interview.nombre}
