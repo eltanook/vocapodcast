@@ -44,7 +44,7 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-voca-light-gray dark:bg-voca-dark-gray pt-24 pb-20">
+    <main className="min-h-screen bg-voca-light-gray dark:bg-voca-blue pt-24 pb-20">
       <div className="container">
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-voca-blue dark:text-voca-cream tracking-tight">
@@ -62,7 +62,7 @@ export default async function BlogPage() {
               <Link 
                 href={`/blog/${post.slug.current}`} 
                 key={post._id}
-                className="group relative rounded-xl overflow-hidden shadow-lg aspect-[2.5/1] flex items-end"
+                className="group relative rounded-xl overflow-hidden shadow-lg aspect-video md:aspect-[2.5/1] flex items-end"
               >
                 {post.mainImage ? (
                   <Image 
@@ -123,7 +123,7 @@ export default async function BlogPage() {
                   key={post._id}
                   className="group voca-card flex flex-col h-full"
                 >
-                  <div className="relative aspect-[2.2/1] overflow-hidden">
+                  <div className="relative aspect-video md:aspect-[2.2/1] overflow-hidden rounded-t-xl">
                     {post.mainImage ? (
                       <Image 
                         src={urlForImage(post.mainImage).url()} 

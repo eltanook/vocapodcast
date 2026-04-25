@@ -136,33 +136,18 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-voca-light-gray dark:bg-voca-darker-blue pb-20">
+    <main className="min-h-screen bg-voca-light-gray dark:bg-voca-blue">
       <article>
-        {/* Header Section */}
+        {/* Header Hero */}
         <header className="bg-voca-light-gray dark:bg-voca-darker-blue pt-32 pb-16">
           <div className="container max-w-4xl">
             <Link 
               href="/blog" 
-              className="inline-flex items-center text-sm font-medium text-voca-blue/60 dark:text-voca-cream/60 hover:text-voca-blue dark:hover:text-voca-cream transition-colors mb-8"
+              className="inline-flex items-center text-voca-blue/60 dark:text-voca-cream/60 hover:text-voca-blue dark:hover:text-voca-cream transition-colors mb-8 group"
             >
-              <ChevronLeft className="w-4 h-4 mr-1" />
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
               Volver al blog
             </Link>
-
-            <div className="flex items-center space-x-4 text-sm text-voca-blue/60 dark:text-voca-cream/60 mb-6">
-              <span className="bg-voca-blue/10 dark:bg-white/10 text-voca-blue dark:text-voca-cream px-3 py-1 rounded-full font-semibold">
-                {post.category || 'Artículo'}
-              </span>
-              <span className="flex items-center">
-                <Calendar className="w-4 h-4 mr-2" />
-                {formatDate(post.publishedAt)}
-              </span>
-              <span className="flex items-center">
-                <Clock className="w-4 h-4 mr-2" />
-                {post.readTime} min
-              </span>
-            </div>
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-voca-blue dark:text-voca-cream leading-tight mb-8">
               {post.title}
             </h1>
@@ -178,7 +163,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Main Image */}
         {post.mainImage && (
           <div className="container max-w-4xl -mt-10 mb-16">
-            <div className="relative aspect-[3.5/1] w-full rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-video md:aspect-[3/1] w-full rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src={urlForImage(post.mainImage).url()}
                 alt={post.mainImage.alt || post.title}
