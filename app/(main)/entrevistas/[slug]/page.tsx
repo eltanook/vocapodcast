@@ -93,7 +93,7 @@ export default async function InterviewDetailPage({ params }: Props) {
               name: "Voca Podcast",
               logo: {
                 "@type": "ImageObject",
-                url: "https://vocapodcast.com/favicon.png",
+                url: "https://vocapodcast.online/favicon.png",
               },
             },
           }),

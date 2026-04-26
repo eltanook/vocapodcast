@@ -28,7 +28,7 @@ export default async function EntrevistasPage() {
             name: "Entrevistas - Voca Podcast",
             description:
               "Explora nuestra colección completa de entrevistas sobre vocaciones reales. Historias inspiradoras de profesionales de diferentes áreas.",
-            url: "https://vocapodcast.com/entrevistas",
+            url: "https://vocapodcast.online/entrevistas",
             mainEntity: {
               "@type": "ItemList",
               name: "Entrevistas de Voca Podcast",

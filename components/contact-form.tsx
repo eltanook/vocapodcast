@@ -38,7 +38,7 @@ export function ContactForm() {
           <input type="hidden" name="_subject" value="Nuevo mensaje desde Voca Podcast" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://vocapodcast.com/contacto?success=true" />
+          <input type="hidden" name="_next" value="https://vocapodcast.online/contacto?success=true" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">

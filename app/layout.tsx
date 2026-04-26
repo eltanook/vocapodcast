@@ -68,14 +68,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://vocapodcast.com"),
+  metadataBase: new URL("https://vocapodcast.online"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://vocapodcast.com",
+    url: "https://vocapodcast.online",
     title: "Voca Podcast - Detrás de cada vocación, hay una historia",
     description:
       "Un espacio de historias y aprendizajes con personajes que inspiran. Exploramos las vocaciones reales que construyen el mundo.",
@@ -125,7 +125,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" sizes="16x16" type="image/png" />
         <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="canonical" href="https://vocapodcast.com" />
+        <link rel="canonical" href="https://vocapodcast.online" />
         <meta name="theme-color" content="#1f3b4d" />
         <meta name="msapplication-TileColor" content="#1f3b4d" />
         <meta name="msapplication-TileImage" content="/favicon.png" />
@@ -139,10 +139,10 @@ export default function RootLayout({
               alternateName: ["VocaPodcast", "Voca", "Podcast Vocación", "Vocación Podcast"],
               description:
                 "Un espacio de historias y aprendizajes con personajes que inspiran. Exploramos las vocaciones reales que construyen el mundo.",
-              url: "https://vocapodcast.com",
+              url: "https://vocapodcast.online",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://vocapodcast.com/entrevistas?search={search_term_string}",
+                target: "https://vocapodcast.online/entrevistas?search={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
               publisher: {
@@ -151,7 +151,7 @@ export default function RootLayout({
                 alternateName: ["VocaPodcast", "Voca"],
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://vocapodcast.com/favicon.png",
+                  url: "https://vocapodcast.online/favicon.png",
                 },
                 founder: {
                   "@type": "Person",

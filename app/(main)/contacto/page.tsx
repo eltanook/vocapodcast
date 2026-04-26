@@ -25,7 +25,7 @@ export default function ContactoPage() {
             "@type": "ContactPage",
             name: "Contacto - Voca Podcast",
             description: "Página de contacto de Voca Podcast para propuestas de entrevistas y consultas generales.",
-            url: "https://vocapodcast.com/contacto",
+            url: "https://vocapodcast.online/contacto",
             mainEntity: {
               "@type": "Organization",
               name: "Voca Podcast",
