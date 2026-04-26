@@ -90,13 +90,6 @@ export function ContactSocial() {
               </div>
             </a>
           </div>
-
-          <div className="mt-auto pt-6 border-t border-voca-blue/10 dark:border-voca-cream/10">
-            <div className="text-center">
-              <p className="text-sm text-voca-blue/70 dark:text-voca-cream/70 mb-2">¿Tienes una historia que contar?</p>
-              <p className="text-xs text-voca-blue/60 dark:text-voca-cream/60">maximosarmiento2004@gmail.com</p>
-            </div>
-          </div>
         </CardContent>
       </Card>
     </div>

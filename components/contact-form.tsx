@@ -25,7 +25,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="voca-card">
+    <Card id="contact-form" className="voca-card">
       <CardHeader>
         <CardTitle className="text-voca-blue dark:text-voca-cream">Envíanos un mensaje</CardTitle>
         <CardDescription className="text-voca-blue/70 dark:text-voca-cream/70">

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Youtube, Smartphone, Instagram } from "lucide-react"
+import { ScrollReveal, ScrollRevealGroup } from "@/components/scroll-reveal"
 
 const platforms = [
   {
@@ -44,20 +45,23 @@ const platforms = [
 
 export function WhereToWatchSection() {
   return (
-    <section className="py-20 bg-white dark:bg-voca-blue">
+    <section className="py-20 bg-white dark:bg-voca-blue overflow-hidden">
       <div className="container">
-        <div className="text-center space-y-4 mb-12">
+        <ScrollReveal direction="up" className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-voca-dark-blue dark:text-white">
             Dónde ver Voca Podcast
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Encuentra nuestros episodios en tu plataforma favorita
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ScrollRevealGroup
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          stagger={0.1}
+        >
           {platforms.map((platform, index) => (
-            <div key={index} className="group text-center h-full voca-hover-lift">
+            <ScrollReveal key={index} direction="up" distance={20} className="group text-center h-full voca-hover-lift">
               <div className="voca-card p-6 h-full flex flex-col justify-between">
                 <div className="space-y-4 flex-1">
                   <div className="w-16 h-16 mx-auto bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -84,9 +88,9 @@ export function WhereToWatchSection() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
-        </div>
+        </ScrollRevealGroup>
       </div>
     </section>
   )

@@ -9,6 +9,7 @@ import { Play, Clock, Calendar, ChevronLeft, ChevronRight, ExternalLink } from "
 import { urlForImage } from "@/sanity/lib/image"
 import { filterInterviews } from "@/sanity/lib/utils"
 import type { Interview } from "@/sanity/lib/types"
+import { ScrollReveal, ScrollRevealGroup } from "@/components/scroll-reveal"
 
 const ITEMS_PER_PAGE = 6
 
@@ -55,83 +56,88 @@ export function InterviewsGrid({
 
   return (
     <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <ScrollRevealGroup
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+        stagger={0.1}
+        key={currentPage} // Reiniciar animación al cambiar de página
+      >
         {currentInterviews.map((interview) => (
-          <Card
-            key={interview.id}
-            className="group overflow-hidden voca-card"
-          >
-            <div className="relative aspect-video overflow-hidden">
-              <Image
-                src={
-                  typeof interview.thumbnail === "string"
-                    ? interview.thumbnail
-                    : interview.thumbnail?.asset
-                      ? urlForImage(interview.thumbnail).url()
-                      : "/placeholder.svg"
-                }
-                alt={interview.title}
-                width={300}
-                height={200}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              {/* Overlay con botones en hover */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
-                <Button
-                  size="sm"
-                  className="bg-voca-blue hover:bg-voca-blue/90 text-voca-cream"
-                  onClick={() => window.open(interview.youtubeUrl, "_blank")}
-                >
-                  <Play className="w-4 h-4 mr-1" />
-                  Ver
-                </Button>
-                <Link href={`/entrevistas/${interview.slug}`} passHref>
+          <ScrollReveal key={interview.id} direction="up" distance={20}>
+            <Card
+              className="group overflow-hidden voca-card h-full"
+            >
+              <div className="relative aspect-video overflow-hidden">
+                <Image
+                  src={
+                    typeof interview.thumbnail === "string"
+                      ? interview.thumbnail
+                      : interview.thumbnail?.asset
+                        ? urlForImage(interview.thumbnail).url()
+                        : "/placeholder.svg"
+                  }
+                  alt={interview.title}
+                  width={300}
+                  height={200}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                {/* Overlay con botones en hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
                   <Button
                     size="sm"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-voca-blue bg-transparent"
-                    asChild
+                    className="bg-voca-blue hover:bg-voca-blue/90 text-voca-cream"
+                    onClick={() => window.open(interview.youtubeUrl, "_blank")}
                   >
-                    <span>
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      Detalles
-                    </span>
+                    <Play className="w-4 h-4 mr-1" />
+                    Ver
                   </Button>
-                </Link>
-              </div>
-              <div className="absolute top-3 left-3">
-                <span className="bg-voca-blue text-voca-cream text-xs px-2 py-1 rounded-full font-medium capitalize">
-                  {interview.category}
-                </span>
-              </div>
-            </div>
-
-            <CardContent className="p-4 space-y-3">
-              <div className="space-y-2">
-                <h3 className="font-montserrat font-semibold text-lg leading-tight group-hover:text-voca-gray transition-colors text-voca-blue dark:text-voca-cream">
-                  <Link href={`/entrevistas/${interview.slug}`}>{interview.title}</Link>
-                </h3>
-                <p className="text-sm text-voca-blue/70 dark:text-voca-cream/70 line-clamp-2">
-                  {interview.description.length > 100
-                    ? `${interview.description.substring(0, 100)}...`
-                    : interview.description}
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-voca-blue/60 dark:text-voca-cream/60">
-                <div className="flex items-center space-x-1">
-                  <Clock className="w-3 h-3" />
-                  <span>{interview.duration}</span>
+                  <Link href={`/entrevistas/${interview.slug}`} passHref>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-white text-white hover:bg-white hover:text-voca-blue bg-transparent"
+                      asChild
+                    >
+                      <span>
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Detalles
+                      </span>
+                    </Button>
+                  </Link>
                 </div>
-                <div className="flex items-center space-x-1">
-                  <Calendar className="w-3 h-3" />
-                  <span>{formatDate(interview.date)}</span>
+                <div className="absolute top-3 left-3">
+                  <span className="bg-voca-blue text-voca-cream text-xs px-2 py-1 rounded-full font-medium capitalize">
+                    {interview.category}
+                  </span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+
+              <CardContent className="p-4 space-y-3">
+                <div className="space-y-2">
+                  <h3 className="font-montserrat font-semibold text-lg leading-tight group-hover:text-voca-gray transition-colors text-voca-blue dark:text-voca-cream">
+                    <Link href={`/entrevistas/${interview.slug}`}>{interview.title}</Link>
+                  </h3>
+                  <p className="text-sm text-voca-blue/70 dark:text-voca-cream/70 line-clamp-2">
+                    {interview.description.length > 100
+                      ? `${interview.description.substring(0, 100)}...`
+                      : interview.description}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-voca-blue/60 dark:text-voca-cream/60">
+                  <div className="flex items-center space-x-1">
+                    <Clock className="w-3 h-3" />
+                    <span>{interview.duration}</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Calendar className="w-3 h-3" />
+                    <span>{formatDate(interview.date)}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </ScrollReveal>
         ))}
-      </div>
+      </ScrollRevealGroup>
 
       {filteredAndSortedInterviews.length === 0 && (
         <div className="text-center py-12">

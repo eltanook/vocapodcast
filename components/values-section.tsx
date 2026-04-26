@@ -1,4 +1,5 @@
 import { Heart, Eye, Lightbulb, Users, Star, Target } from "lucide-react"
+import { ScrollReveal, ScrollRevealGroup } from "@/components/scroll-reveal"
 
 const values = [
   {
@@ -35,21 +36,26 @@ const values = [
 
 export function ValuesSection() {
   return (
-    <section className="py-20 bg-white dark:bg-voca-blue">
+    <section className="py-20 bg-white dark:bg-voca-blue overflow-hidden">
       <div className="container">
-        <div className="text-center space-y-4 mb-16">
+        <ScrollReveal direction="up" className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-voca-blue dark:text-voca-cream">
             Nuestros valores
           </h2>
           <p className="text-lg text-voca-blue/70 dark:text-voca-cream/70 max-w-2xl mx-auto">
             Los principios que guían cada conversación y cada historia que compartimos
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <ScrollRevealGroup
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          stagger={0.1}
+        >
           {values.map((value, index) => (
-            <div
+            <ScrollReveal
               key={index}
+              direction="up"
+              distance={20}
               className="group p-6 voca-card voca-hover-lift"
             >
               <div className="flex items-start space-x-4">
@@ -65,9 +71,9 @@ export function ValuesSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
-        </div>
+        </ScrollRevealGroup>
       </div>
     </section>
   )

@@ -4,66 +4,74 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Instagram, Linkedin } from "lucide-react"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 export function AboutSection() {
   return (
-    <section className="py-12 md:py-20 bg-voca-light-gray dark:bg-voca-blue">
+    <section className="py-12 md:py-20 bg-voca-light-gray dark:bg-voca-blue overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 order-2 lg:order-1">
-            <div className="space-y-4">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-voca-blue dark:text-voca-cream">
-                ¿Qué mueve a las personas a hacer lo que hacen?
-              </h2>
-              <p className="text-base md:text-lg text-voca-blue/80 dark:text-voca-cream/80 leading-relaxed">
-                Voca Podcast nace con esta pregunta de fondo. Exploramos las vocaciones reales que construyen el mundo:
-                desde lo visible hasta lo invisible, desde lo cotidiano hasta lo extraordinario.
-              </p>
-            </div>
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="space-y-4">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-voca-blue dark:text-voca-cream">
+                  ¿Qué mueve a las personas a hacer lo que hacen?
+                </h2>
+                <p className="text-base md:text-lg text-voca-blue/80 dark:text-voca-cream/80 leading-relaxed">
+                  Voca Podcast nace con esta pregunta de fondo. Exploramos las vocaciones reales que construyen el mundo:
+                  desde lo visible hasta lo invisible, desde lo cotidiano hasta lo extraordinario.
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <div className="space-y-4">
-              <p className="text-sm md:text-base text-voca-blue/70 dark:text-voca-cream/70">
-                Entrevistamos a personas que se destacan o que simplemente hacen lo que aman, para descubrir el camino
-                detrás de cada oficio, profesión o forma de vida.
-              </p>
-              <p className="text-sm md:text-base text-voca-blue dark:text-voca-cream">
-                <strong className="text-voca-blue dark:text-voca-cream">Nuestro objetivo:</strong> Inspirar, despertar
-                curiosidad y mostrar que el trabajo también puede ser elección, deseo, identidad.
-              </p>
-            </div>
+            <ScrollReveal direction="up" delay={0.2}>
+              <div className="space-y-4">
+                <p className="text-sm md:text-base text-voca-blue/70 dark:text-voca-cream/70">
+                  Entrevistamos a personas que se destacan o que simplemente hacen lo que aman, para descubrir el camino
+                  detrás de cada oficio, profesión o forma de vida.
+                </p>
+                <p className="text-sm md:text-base text-voca-blue dark:text-voca-cream">
+                  <strong className="text-voca-blue dark:text-voca-cream">Nuestro objetivo:</strong> Inspirar, despertar
+                  curiosidad y mostrar que el trabajo también puede ser elección, deseo, identidad.
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
-                Historias reales
-              </span>
-              <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
-                Mirada joven
-              </span>
-              <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
-                Contenido auténtico
-              </span>
-            </div>
+            <ScrollReveal direction="up" delay={0.3}>
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
+                  Historias reales
+                </span>
+                <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
+                  Mirada joven
+                </span>
+                <span className="px-3 md:px-4 py-1 md:py-2 bg-voca-blue/10 text-voca-blue dark:bg-voca-cream/10 dark:text-voca-cream rounded-full text-xs md:text-sm font-medium">
+                  Contenido auténtico
+                </span>
+              </div>
+            </ScrollReveal>
 
-            {/* Llamados a la acción debajo del texto */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
-              <Button
-                className="voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream shadow-sm hover:shadow-md"
-                onClick={() => window.open("https://www.youtube.com/@vocapodcast", "_blank")}
-              >
-                Ver canal
-              </Button>
-              <Link href="/entrevistas">
+            <ScrollReveal direction="up" delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
                 <Button
-                  variant="outline"
-                  className="voca-button w-full sm:w-auto border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-voca-cream/30 dark:text-voca-cream dark:hover:bg-voca-cream/10 shadow-sm hover:shadow-md"
+                  className="voca-button bg-voca-blue hover:bg-voca-dark-blue text-voca-cream shadow-sm hover:shadow-md"
+                  onClick={() => window.open("https://www.youtube.com/@vocapodcast", "_blank")}
                 >
-                  Ver entrevistas
+                  Ver canal
                 </Button>
-              </Link>
-            </div>
+                <Link href="/entrevistas">
+                  <Button
+                    variant="outline"
+                    className="voca-button w-full sm:w-auto border-voca-blue text-voca-blue hover:bg-voca-blue hover:text-voca-cream bg-transparent dark:border-voca-cream/30 dark:text-voca-cream dark:hover:bg-voca-cream/10 shadow-sm hover:shadow-md"
+                  >
+                    Ver entrevistas
+                  </Button>
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
 
-          <div className="relative group order-1 lg:order-2">
+          <ScrollReveal direction="left" delay={0.2} className="relative group order-1 lg:order-2">
             <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-xl relative">
               <Image
                 src="/about.jpg"
@@ -73,7 +81,6 @@ export function AboutSection() {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
 
-              {/* Overlay con información de Máximo */}
               <div className="absolute inset-0 bg-voca-blue/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 md:p-6">
                 <div className="text-center space-y-3 md:space-y-4 text-voca-cream">
                   <div className="w-12 h-12 md:w-16 md:h-16 mx-auto bg-voca-cream/20 rounded-full flex items-center justify-center">
@@ -125,7 +132,7 @@ export function AboutSection() {
                 />
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

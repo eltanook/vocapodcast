@@ -1,10 +1,11 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 export function InterviewRequestSection() {
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative overflow-hidden">
       {/* Background Image with Fixed Attachment */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -18,7 +19,7 @@ export function InterviewRequestSection() {
 
       {/* Content */}
       <div className="relative z-10 container">
-        <div className="max-w-3xl mx-auto text-center space-y-12">
+        <ScrollReveal direction="up" className="max-w-3xl mx-auto text-center space-y-12">
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-voca-cream">
               ¿Quieres Ser Entrevistado?
@@ -39,7 +40,7 @@ export function InterviewRequestSection() {
               </Button>
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )

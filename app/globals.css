@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --voca-blue: #1f3b4d;
   --voca-dark-blue: #152b36;
@@ -10,6 +14,7 @@
   --voca-gray: #2e2e2f;
   --voca-dark-gray: #1a1a1b;
   --voca-light-gray: #f8f9fa;
+  --radius: 0.375rem;
 
   /* Light mode */
   --background: #ffffff;
@@ -54,6 +59,7 @@
   --border: #2e2e2f;
   --input: #2e2e2f;
   --ring: #fcfbf1;
+  --radius: 0.375rem;
 }
 
 @layer base {
@@ -85,7 +91,7 @@
   }
   
   .voca-button {
-    @apply rounded-lg !important;
+    @apply rounded-md !important;
     @apply transition-all duration-300 shadow-sm;
   }
   

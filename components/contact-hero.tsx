@@ -4,7 +4,7 @@ const reasons = [
   {
     icon: MessageCircle,
     title: "Proponer una entrevista",
-    description: "¿Tienes una historia que contar?",
+    description: "Comparte tu experiencia con nosotros",
   },
   {
     icon: Users,
@@ -48,7 +48,7 @@ export function ContactHero() {
                 {" "}
                 Aquí tienes algunas razones por las que podrías querer contactarnos:
               </span>
-              <span className="md:hidden"> ¿Tienes una historia que contar? ¡Contáctanos!</span>
+              <span className="md:hidden"> ¡Contáctanos y hablemos!</span>
             </p>
           </div>
 
